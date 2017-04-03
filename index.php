@@ -5,6 +5,9 @@
 <link rel="shortcut icon" href="favicon.ico" type="img/x-icon" />
 <link rel="icon" href="favicon.ico" type="img/x-icon" />
 <?php
+	require_once ('Database/dbConnect.php');
+	$db = new Database();
+
 	$title="ADAM SHOP";
 	if(isset($_GET['nav']))
 	{$tit = $_GET['nav'];
@@ -51,13 +54,10 @@ include('site/header.php');
 							include('site/gioithieu.php');
 							break;
 							case 'lienhe':
-							include('site/lienhe.php');
+							include('site/LienHe/lienhe.php');
 							break;
 							case 'success':
-							include('site/success.php');
-							break;
-							case 'sanpham':
-							include('site/sanpham.php');
+							include('site/LienHe/success.php');
 							break;
 							default:
 							include('site/home.php');
