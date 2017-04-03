@@ -4,13 +4,13 @@
 	-moz-transition-duration: 0.5s;
 	-o-transition-duration: 0.5s;}
 	.hieuung:hover
-	{-webkit-transform:scale(1.3);
-	-moz-transform:scale(1.3); 
-	-o-transform:scale(1.3);
+	{-webkit-transform:scale(1.1);
+	-moz-transform:scale(1.1); 
+	-o-transform:scale(1.1);
 	}
 </style>
 <div class="header-bottom">
-	    <div class="wrap"> 
+	    <div class="wrap">
 			<div class="header-bottom-left">
 				<div class="logo">
 					<a href="?"><img src="images/adamshop.png" alt=""/></a>
@@ -18,30 +18,33 @@
 				<div class="menu">
 	            <ul class="megamenu skyblue">
 			<li class="active grid"><a href="index.php">TRANG CHỦ</a></li>
-			<li><a class="color4" href="#">SẢN PHẨM</a>
+			<li><a class="color4" href="index.php?nav=sanpham">SẢN PHẨM</a>
 				<div class="megapanel">
-      
+                	<?php 
+						include ("Connect.php");
+						$dbo->query("set names utf8");
+						$dsloai = $dbo->prepare("select * from  loaisanpham");
+						$dsloai->execute();
+						$loaisanpham = $dsloai->fetchAll(PDO::FETCH_ASSOC);
+						?>
                         <?php
-
-                        $db->prepare('SELECT * FROM loai_san_pham ORDER BY MaLoai DESC');
-								foreach($db->getArray() as $row){
+								foreach($loaisanpham as $row1){
 								
 					?>
 					<div class="row">
 						<div class="col1">
 							<div class="h_nav">
-								<a href="#"><h4><?php echo $row['TenLoai'] ?></h4></a>
+								<a href="#"><h4><?php echo $row1['tenloai'] ?></h4></a>
 								<ul>
-                                <?php
-									$db->prepare("SELECT DISTINCT TenThuongHieu FROM thuong_hieu INNER JOIN san_pham ON san_pham.MaThuongHieu = thuong_hieu.MaThuongHieu
-                                                                     WHERE san_pham.MaLoai = :maLoai");
-                                    $db->bind(':maLoai', $row['MaLoai']);
-									
+                                <?php 
+									$ds = $dbo->prepare("select * from thuonghieu where maloai ='".$row1['maloai']."'");
+									$ds->execute();
+									$loai = $ds->fetchAll(PDO::FETCH_ASSOC)
 								?>
                             	<?php
-								foreach($db->getArray() as $row){
+								foreach($loai as $row){
 								?> 
-									<li><a href="#"><?php echo $row['TenThuongHieu'] ?></a></li>
+									<li><a href="#"><?php echo $row['name'] ?></a></li>
                                     <?php } ?> 
 								</ul>
 							</div>							
@@ -50,7 +53,7 @@
 					  </div>  
 					</div>
 				</li>				
-				<li><a class="color5" href="#">TRỢ GIÚP</a>
+				<li><a class="color5"  href="#">TRỢ GIÚP</a>
 				<div class="megapanel">
 					<div class="col1">
 							<div class="h_nav">
