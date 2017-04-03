@@ -1,0 +1,65 @@
+*{
+	margin:0;
+	padding:0;	
+}
+body{
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+.clr{
+	clear:both;
+}
+#wrapper{
+	min-height:700px;
+	width:960px;
+	margin:auto;
+	
+}
+header{
+	background-color: lightcoral;
+	height:45px;
+	width:100%;
+	margin:auto;
+	position:fixed;
+}
+#login{
+	float:right;
+	line-height:45px;
+	margin:0 80px;
+	color:#3DBB33;
+}
+#login a{
+	color:#A9BD13;
+	text-decoration:none;
+}
+#login a:hover{
+	color:#27B72A;
+	text-decoration:underline;
+}
+#menu{
+	line-height:45px;;
+	text-align:center;
+	height:45px;
+	width:651px;
+	margin:auto;
+}
+#menu li{
+	width:129px;
+	float:left;
+	display:inline;
+	border-right:1px solid #999;
+	color:#CCC;
+	font-weight:bold;
+}
+#menu li:hover{
+	background:#C90;
+	color:#9F0;
+}
+
+#content2{
+	margin:0 auto;
+	min-height:680px;
+	background:#497298;
+	border: 10px groove #C1C131;
+}
+
+
